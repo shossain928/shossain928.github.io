@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Projects | Sorif Hossain</title>
+  <meta name="description" content="Current research: behavioural change in infectious disease models, with a live SIR model using power, exponential, Hill and threshold alarm functions.">
+  <meta property="og:title" content="Projects | Sorif Hossain">
+  <meta property="og:description" content="Current research: behavioural change in infectious disease models, with a live SIR model using power, exponential, Hill and threshold alarm functions.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23173F4A'/%3E%3Cpath d='M8 48 C20 48 24 14 32 14 S44 48 56 48' stroke='%23E4A35A' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+</head>
+<body>
+  <div class="setup-warning" style="background:#fff3cd;color:#4d3a00;padding:12px 16px;font:15px/1.5 system-ui,sans-serif;border-bottom:1px solid #e0c36b">
+    <strong>Setup check:</strong> this page can't find <code>style.css</code>, so it has no design. Keep <code>style.css</code> and <code>site.js</code> in the same folder as this page. If you opened it straight from the zip, extract the zip first. See README.md.
+  </div>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">Sorif Hossain</a>
+      <nav class="nav" aria-label="Main">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list">Menu</button>
+        <ul id="nav-list">
+          <li><a href="index.html">About</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="projects.html" aria-current="page">Projects</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="voluntary.html">Voluntary Activities</a></li>
+        </ul>
+      </nav>
+      <a class="cv-pill" href="CV.pdf" download="Sorif_Hossain_CV.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>CV</a>
+      <button class="theme" id="theme" aria-label="Switch between light and dark theme" title="Light / dark">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" fill="currentColor"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+    <header class="page-head">
+      <h1>Projects</h1>
+      <p>Current research on behavioural change in infectious disease modelling.</p>
+    </header>
+
+    <article class="project-main" id="behavioural-change">
+      <div class="project-intro">
+        <div>
+          <span class="status">Current research</span>
+          <h2>Behavioural change in infectious disease models</h2>
+          <p class="when">PhD research, University of Calgary, 2024 – present. Supervisor: Dr. Rob Deardon</p>
+        </div>
+        <div class="project-text">
+          <p>When case counts rise, people distance, wear masks and stay home, and transmission falls. When cases drop, they relax again, and transmission rises. Population-level SIR models can capture this feedback through an <em>alarm function</em>: the transmission rate β is reduced by a factor (1 − a<sub>t</sub>), where the alarm a<sub>t</sub> between 0 and 1 depends on recent incidence.</p>
+          <p>My work simulates epidemics under different alarm functions, develops and evaluates statistical methods for fitting these models, and applies them to real-world data, including COVID-19 and influenza. The live figure below runs the same model in your browser.</p>
+        </div>
+      </div>
+
+      <figure class="bc-fig" id="figure">
+        <div class="bc-top">
+          <div class="seg" id="alarm-type" role="group" aria-label="Alarm function">
+            <button type="button" data-kind="power" aria-pressed="true">Power</button>
+            <button type="button" data-kind="exponential" aria-pressed="false">Exponential</button>
+            <button type="button" data-kind="hill" aria-pressed="false">Hill</button>
+            <button type="button" data-kind="threshold" aria-pressed="false">Threshold</button>
+          </div>
+          <div class="bc-actions">
+            <button type="button" class="btn small" id="bc-play">Play outbreak</button>
+            <label class="chk"><input type="checkbox" id="bc-stoch">Stochastic runs</label>
+            <button type="button" class="btn small" id="bc-redraw" hidden>New draws</button>
+          </div>
+        </div>
+        <div class="bc-body">
+          <div class="bc-plots">
+            <div class="panel panel-wide">
+              <div class="panel-head"><h3>(a) Susceptible, infectious and removed</h3>
+                <div class="seg seg-small" id="sir-view" role="group" aria-label="Compartments shown">
+                  <button type="button" data-view="all" aria-pressed="true">S, I, R</button>
+                  <button type="button" data-view="i" aria-pressed="false">I only</button>
+                </div>
+              </div>
+              <svg id="p-sir" viewBox="0 0 680 280" role="img" aria-label="S, I and R over time, with and without behavioural change"></svg>
+            </div>
+            <div class="panel-row">
+              <div class="panel"><div class="panel-head"><h3>(b) Effective reproduction number R(t)</h3></div>
+                <svg id="p-rt" viewBox="0 0 340 230" role="img" aria-label="Effective reproduction number over time"></svg></div>
+              <div class="panel"><div class="panel-head"><h3>(c) Alarm function a(x)</h3></div>
+                <svg id="p-alarm" viewBox="0 0 340 230" role="img" aria-label="Alarm level against smoothed daily incidence"></svg></div>
+            </div>
+            <noscript><p class="noscript-note">Turn on JavaScript to run this live figure.</p></noscript>
+          </div>
+          <div class="bc-controls">
+            <fieldset class="ctl-group" data-kind="power"><legend>Power alarm</legend>
+              <label class="ctl"><span class="ctl-top"><span>k</span><output id="pw-k-out"></output></span><input type="range" id="pw-k" min="0" max="100" step="1" value="50"><span class="ctl-hint">Smaller k gives a faster rise in alarm</span></label>
+            </fieldset>
+            <fieldset class="ctl-group" data-kind="exponential" hidden><legend>Exponential alarm</legend>
+              <label class="ctl"><span class="ctl-top"><span>δ</span><output id="ex-d-out"></output></span><input type="range" id="ex-d" min="0" max="100" step="1" value="65"><span class="ctl-hint">Larger δ gives a faster rise in alarm</span></label>
+            </fieldset>
+            <fieldset class="ctl-group" data-kind="hill" hidden><legend>Hill alarm</legend>
+              <label class="ctl"><span class="ctl-top"><span>δ (maximum alarm)</span><output id="hi-d-out"></output></span><input type="range" id="hi-d" min="0" max="1" step="0.01" value="0.6"><span class="ctl-hint">The level the alarm levels off at</span></label>
+              <label class="ctl"><span class="ctl-top"><span>x₀ (half-way point)</span><output id="hi-x0-out"></output></span><input type="range" id="hi-x0" min="0" max="100" step="1" value="62"><span class="ctl-hint">Incidence at which alarm reaches δ/2</span></label>
+              <label class="ctl"><span class="ctl-top"><span>ν (steepness)</span><output id="hi-nu-out"></output></span><input type="range" id="hi-nu" min="0.5" max="10" step="0.5" value="4"><span class="ctl-hint">Large ν approaches a threshold</span></label>
+            </fieldset>
+            <fieldset class="ctl-group" data-kind="threshold" hidden><legend>Threshold alarm</legend>
+              <label class="ctl"><span class="ctl-top"><span>δ (alarm level)</span><output id="th-d-out"></output></span><input type="range" id="th-d" min="0" max="1" step="0.01" value="0.6"><span class="ctl-hint">Alarm once incidence passes H</span></label>
+              <label class="ctl"><span class="ctl-top"><span>H (threshold)</span><output id="th-h-out"></output></span><input type="range" id="th-h" min="0" max="100" step="1" value="62"><span class="ctl-hint">Smoothed daily cases that trigger the alarm</span></label>
+            </fieldset>
+            <fieldset class="ctl-group"><legend>Disease and data</legend>
+              <label class="ctl"><span class="ctl-top"><span>β (transmission rate)</span><output id="c-beta-out"></output></span><input type="range" id="c-beta" min="0.2" max="1" step="0.01" value="0.4"><span class="ctl-hint">Per day, before any behavioural change</span></label>
+              <label class="ctl"><span class="ctl-top"><span>Infectious period 1/γ</span><output id="c-ip-out"></output></span><input type="range" id="c-ip" min="2" max="10" step="0.5" value="5"><span class="ctl-hint">Mean days infectious</span></label>
+              <label class="ctl"><span class="ctl-top"><span>Smoothing window m</span></span>
+                <select id="c-m"><option value="1">1 day</option><option value="7">7 days</option><option value="14" selected>14 days</option><option value="30">30 days</option></select>
+                <span class="ctl-hint">Alarm uses mean incidence over the past m days</span></label>
+            </fieldset>
+            <dl class="readout" id="bc-readout" aria-live="polite">
+              <div><dt>Peak infectious</dt><dd id="o-peak">–</dd></div>
+              <div><dt>Peak day</dt><dd id="o-day">–</dd></div>
+              <div><dt>Ever infected</dt><dd id="o-final">–</dd></div>
+              <div><dt>R(t) below 1 from day</dt><dd id="o-r1">–</dd></div>
+              <div><dt>Waves</dt><dd id="o-waves">–</dd></div>
+              <div><dt>Without alarm, ever infected</dt><dd id="o-base">–</dd></div>
+            </dl>
+          </div>
+        </div>
+        <figcaption class="bc-caption"><span class="fig-num">Figure 1.</span> A live SIR model with behavioural change. Choose an alarm function and move the sliders; all three panels update together. Dashed grey lines show the same outbreak with no behavioural change. Population N = 1,000,000 with five initial infections, run for 300 days. <span class="fine">Curves are the expected path of the chain-binomial model; tick “Stochastic runs” to add random realizations.</span></figcaption>
+      </figure>
+
+      <section class="model-box" aria-labelledby="h-model">
+        <h3 id="h-model">The model</h3>
+        <div class="eqs">
+          <p class="eq">I<sup>*</sup><sub>t</sub> ~ Binomial( S<sub>t</sub>, 1 − exp[ −β (1 − a<sub>t</sub>) I<sub>t</sub> / N ] ),&nbsp;&nbsp; R<sup>*</sup><sub>t</sub> ~ Binomial( I<sub>t</sub>, 1 − e<sup>−γ</sup> )</p>
+          <p class="eq">a<sub>t</sub> = f(x<sub>t</sub>), where x<sub>t</sub> is the mean incidence over the previous m days</p>
+          <table class="alarm-table">
+            <tbody>
+              <tr data-kind="power"><th scope="row">Power</th><td>f(x) = 1 − (1 − x/N)<sup>1/k</sup></td></tr>
+              <tr data-kind="exponential"><th scope="row">Exponential</th><td>f(x) = 1 − e<sup>−δx</sup></td></tr>
+              <tr data-kind="hill"><th scope="row">Hill</th><td>f(x) = δ / (1 + (x<sub>0</sub>/x)<sup>ν</sup>)</td></tr>
+              <tr data-kind="threshold"><th scope="row">Threshold</th><td>f(x) = δ · 1(x &gt; H)</td></tr>
+            </tbody>
+          </table>
+          <p class="eq">R(t) = S<sub>t</sub> Σ<sub>k ≥ t</sub> [1 − e<sup>−β<sub>k</sub>/N</sup>] e<sup>−γ(k − t)</sup>,&nbsp;&nbsp; with β<sub>k</sub> = β(1 − a<sub>k</sub>)</p>
+        </div>
+        <p class="small muted">When x is much smaller than N, the power alarm is almost identical to an exponential alarm with δ = 1/(Nk), so those two tabs can give near-identical curves. Model and alarm forms follow Ward, Deardon and Schmidt (2023), <i>Infectious Disease Modelling</i> 8(4), 947–963 (<a href="https://doi.org/10.1016/j.idm.2023.08.002">doi:10.1016/j.idm.2023.08.002</a>); the exponential alarm as in Ward, Deardon and Deeth (2025), <i>Canadian Journal of Statistics</i> 53(1), e11828.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="foot">
+    <div class="foot-inner">
+      <div>
+        <p class="foot-name">Sorif Hossain</p>
+        <address>
+          <a href="mailto:sorif.hossain@ucalgary.ca">sorif.hossain@ucalgary.ca</a><br>
+          Math Sciences Building, MS 356<br>
+          University of Calgary, 2500 University Drive NW<br>
+          Calgary, Alberta T2N 1N4, Canada
+        </address>
+      </div>
+      <div>
+        <h3>Profiles</h3>
+        <ul>
+          <li><a href="https://scholar.google.com/citations?user=DqhjKJ0AAAAJ&amp;hl=en">Google Scholar</a></li>
+          <li><a href="https://orcid.org/0000-0001-8399-4917">ORCID</a></li>
+          <li><a href="https://www.researchgate.net/profile/Sorif-Hossain">ResearchGate</a></li>
+          <li><a href="https://www.linkedin.com/in/sorif-hossain-9a7525161/">LinkedIn</a></li>
+          <li><a href="https://profiles.ucalgary.ca/sorif-hossain">UCalgary profile</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>On this site</h3>
+        <ul>
+          <li><a href="index.html">About</a></li>
+          <li><a href="publications.html">Publications</a></li>
+          <li><a href="presentations.html">Presentations</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="voluntary.html">Voluntary Activities</a></li>
+          <li><a href="CV.pdf" download="Sorif_Hossain_CV.pdf">Download CV (PDF)</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="site.js"></script>
+  <script src="projects.js"></script>
+</body>
+</html>
